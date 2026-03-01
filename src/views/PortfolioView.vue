@@ -36,11 +36,11 @@ export default {
         },
         {
           id: 4,
-          name: 'Bumdesma',
-          imageFile: 'portfolio-bumdesma.png',
-          status: 'a web application used by village-owned enterprises at the sub-district level to make it easier for them in terms of accounting that is equipped with a microfinance balance.',
-          tech: 'Laravel 8, Bootstrap',
-          github: 'null',
+          name: 'Acreage',
+          imageFile: 'acreage.jpeg',
+          status: 'Acreage is a real-time real estate analytics dashboard that uses a Random Forest Regression model to estimate property market values. Built with FastAPI, Vue.js 3, and Tailwind CSS v4, the application features Explainable AI (XAI) visualizations through Chart.js to provide transparent, data-driven financial insights. This project showcases a seamless end-to-end integration of predictive modeling and modern web architecture.',
+          tech: 'Vue, Python, Vite ',
+          github: 'https://github.com/SamMorales11/project-acreage',
           demo: 'null',
           expanded: false
         },

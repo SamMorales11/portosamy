@@ -41,7 +41,7 @@ export default {
           status: 'Acreage is a real-time real estate analytics dashboard that uses a Random Forest Regression model to estimate property market values. Built with FastAPI, Vue.js 3, and Tailwind CSS v4, the application features Explainable AI (XAI) visualizations through Chart.js to provide transparent, data-driven financial insights. This project showcases a seamless end-to-end integration of predictive modeling and modern web architecture.',
           tech: 'Vue, Python, Vite ',
           github: 'https://github.com/SamMorales11/project-acreage',
-          demo: 'null',
+          demo: 'https://acreageproject.netlify.app/',
           expanded: false
         },
         {

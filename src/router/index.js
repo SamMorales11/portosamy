@@ -47,7 +47,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title + '| Samuel Siahaan';
+  document.title = to.meta.title + ' | Samuel Siahaan';
   next();
 });
 

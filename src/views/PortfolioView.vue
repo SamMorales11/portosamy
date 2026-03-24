@@ -37,7 +37,7 @@ export default {
         {
           id: 4,
           name: 'Acreage',
-          imageFile: 'acreage.jpeg',
+          imageFile: 'acreage2.jpeg',
           status: 'Acreage is a real-time real estate analytics dashboard that uses a Random Forest Regression model to estimate property market values. Built with FastAPI, Vue.js 3, and Tailwind CSS v4, the application features Explainable AI (XAI) visualizations through Chart.js to provide transparent, data-driven financial insights. This project showcases a seamless end-to-end integration of predictive modeling and modern web architecture.',
           tech: 'Vue, Python, Vite ',
           github: 'https://github.com/SamMorales11/project-acreage',
@@ -63,7 +63,17 @@ export default {
           github: 'https://github.com/Project-Ippl-Asset-Market',
           demo: 'null',
           expanded: false
-        }
+        },
+        {
+          id: 6,
+          name: 'AG Connect',
+          imageFile: 'ag connect.jpeg',
+          status: 'AG Connect is a modern, enterprise-grade church management system designed to streamline congregation administration and boost community engagement through real-time QR attendance tracking, dynamic gamification, and actionable data analytics.',
+          tech: 'Vue js, Python',
+          github: 'https://github.com/SamMorales11/ag-connect',
+          demo: 'https://ag-connect.vercel.app/',
+          expanded: false
+        },
       ]
     };
   }

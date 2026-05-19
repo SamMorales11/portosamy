@@ -74,6 +74,16 @@ export default {
           demo: 'https://ag-connect.vercel.app/',
           expanded: false
         },
+          {
+          id: 7,
+          name: 'Omnihealth',
+          imageFile: 'omnihealth.png',
+          status: 'OmniHealth Systems is a modern, enterprise-grade clinical management suite designed to streamline medical operations and elevate patient care precision through structured SOAP documentation tracking, seamless e-prescribing with real-time pharmacy inventory synchronization, and actionable clinical analytics dashboards.',
+          tech: 'TypeScript',
+          github: 'https://github.com/SamMorales11/Omnihealth',
+          demo: 'https://omnihealth-web.vercel.app/',
+          expanded: false
+        },
       ]
     };
   }

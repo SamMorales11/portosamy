@@ -1,22 +1,98 @@
 <template>
-  <main
-    class="mt-10 md:mt-1 flex flex-col-reverse gap-8 items-center md:flex-row md:gap-16 md:justify-center min-h-[65vh] md:min-h-[80vh]">
-    <div class="space-y-2 text-center md:text-left px-10">
-      <p class="text-blue-400">Hello World, I'm</p>
-      <h1 class="text-4xl font-bold md:text-5xl text-white fadein-up">Samuel Siahaan</h1>
-      <div class="py-2">
-        <h1
-          class="typewrite text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-blue-700 md:text-2xl fadein-up"
-          ref="typewriter">
-          <span class="wrap">{{ txt }}</span>
+  <main class="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center px-4 md:px-8 overflow-hidden">
+    <!-- Subtle background glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16 py-12 md:py-0">
+      
+      <!-- Left Content -->
+      <div class="flex-1 text-center md:text-left space-y-5 z-10">
+        <!-- Greeting -->
+        <p class="text-[#659cf0] text-sm md:text-base font-medium tracking-wide fadein-up">
+          Hello World, I'm
+        </p>
+
+        <!-- Name -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight fadein-up" style="animation-delay: 100ms">
+          Samuel Siahaan
         </h1>
+
+        <!-- Typewriter Role -->
+        <div class="h-8 md:h-10 flex items-center justify-center md:justify-start">
+          <h2
+            class="typewrite text-xl md:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-[#659cf0] to-blue-500 fadein-up"
+            style="animation-delay: 200ms"
+            ref="typewriter"
+          >
+            <span class="wrap">{{ txt }}</span>
+          </h2>
+        </div>
+
+        <!-- Short Bio -->
+        <p class="text-gray-300 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed fadein-up" style="animation-delay: 300ms">
+          A Balikpapan-based Software Engineer passionate about building impactful digital solutions. 
+          Focused on clean architecture, scalable systems, and turning ideas into real-world products.
+        </p>
+
+        <!-- Info Badges -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-1 fadein-up" style="animation-delay: 400ms">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-xs text-gray-300">
+            <svg class="w-3.5 h-3.5 text-[#659cf0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Balikpapan, Indonesia
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-xs text-gray-300">
+            <svg class="w-3.5 h-3.5 text-[#659cf0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            3+ Years Experience
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-4 fadein-up" style="animation-delay: 500ms">
+          <router-link
+            to="/portfolio"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#659cf0] text-white text-sm font-medium hover:bg-blue-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(101,156,240,0.4)]"
+          >
+            View Projects
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </router-link>
+
+          <router-link
+            to="/contact"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#333] text-gray-300 text-sm font-medium hover:border-[#659cf0] hover:text-[#659cf0] transition-all duration-300"
+          >
+            Contact Me
+          </router-link>
+        </div>
       </div>
-      <p class="text-white pr-4 fade-in-from-left">Welcome to My personal website. <span class="wave">👋🏼</span></p>
-      <br>
+
+      <!-- Right Content - Avatar -->
+      <div class="relative flex justify-center md:justify-end fadein-right z-10">
+        <!-- Glow ring -->
+        <div class="absolute inset-0 rounded-full bg-[#659cf0]/20 blur-2xl scale-90"></div>
+        
+        <div class="relative">
+          <img
+            alt="Samuel Siahaan"
+            fetchpriority="high"
+            width="400"
+            height="400"
+            decoding="async"
+            class="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover rounded-full border-[3px] border-[#659cf0]/60 shadow-[0_0_60px_rgba(101,156,240,0.25)]"
+            src="img/Screenshot 2026-02-20 103528.jpg"
+          />
+          
+          <!-- Decorative ring -->
+          <div class="absolute -inset-3 rounded-full border border-[#659cf0]/20 pointer-events-none"></div>
+          <div class="absolute -inset-6 rounded-full border border-[#659cf0]/10 pointer-events-none"></div>
+        </div>
       </div>
-    <div class="flex justify-center md:justify-start fadein-right">
-      <img alt="avatar" fetchpriority="high" width="400" height="400" decoding="async" data-nimg="1"
-        class="w-64 h-64 md:w-96 md:h-96 object-cover rounded-full border-4 border-blue-400 pict" src="img\Screenshot 2026-02-20 103528.jpg">
     </div>
   </main>
 </template>
@@ -26,7 +102,12 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      toRotate: ["Web Developer", "Full-stack Engineer", "Informatics Student", "CyberSecurity Enthusiast"],
+      toRotate: [
+        "Web Developer",
+        "Full-stack Engineer",
+        "Informatics Student",
+        "CyberSecurity Enthusiast"
+      ],
       period: 2000,
       txt: '',
       loopNum: 0,
@@ -40,19 +121,18 @@ export default {
   },
   methods: {
     tick() {
-      let typewriter = this.$refs.typewriter;
+      const typewriter = this.$refs.typewriter;
+      if (!typewriter) return;
 
-      if (!typewriter) {
-        return;
-      }
+      const i = this.loopNum % this.toRotate.length;
+      const fullTxt = this.toRotate[i];
 
-      let i = this.loopNum % this.toRotate.length;
-      let fullTxt = this.toRotate[i];
+      this.txt = this.isDeleting
+        ? fullTxt.substring(0, this.txt.length - 1)
+        : fullTxt.substring(0, this.txt.length + 1);
 
-      this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
       typewriter.innerHTML = `<span class="wrap">${this.txt}</span>`;
 
-      let that = this;
       let delta = 200 - Math.random() * 100;
 
       if (this.isDeleting) {
@@ -69,152 +149,49 @@ export default {
       }
 
       setTimeout(() => {
-        that.tick();
+        this.tick();
       }, delta);
     },
-  }
-}
+  },
+};
 </script>
 
-<style>
-body {
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.typewrite>.wrap {
-  border-right: 0.08em solid #fff;
-}
-
-.wave {
-  animation-name: wave-animation;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
-  display: inline-block
-}
-
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg)
-  }
-
-  10% {
-    transform: rotate(14deg)
-  }
-
-  20% {
-    transform: rotate(-8deg)
-  }
-
-  30% {
-    transform: rotate(14deg)
-  }
-
-  40% {
-    transform: rotate(-4deg)
-  }
-
-  50% {
-    transform: rotate(10deg)
-  }
-
-  60% {
-    transform: rotate(0deg)
-  }
-
-  to {
-    transform: rotate(0deg)
-  }
-}
-
-.pict {
-  box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
--webkit-box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
--moz-box-shadow: 0px 0px 73px -9px rgba(255,219,112,0.44);
+<style scoped>
+.typewrite > .wrap {
+  border-right: 0.08em solid #659cf0;
+  padding-right: 2px;
 }
 
 .fadein-up {
   opacity: 0;
-  animation-name: fadeInUp;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-delay: 500ms;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 24px, 0);
   }
-
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-.fade-in-from-left {
-  opacity: 0;
-  animation: fadeInLeft 0.5s ease-out forwards;
-  animation-delay: 500ms;
-}
-
-@keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
 .fadein-right {
   opacity: 0;
-  animation: fadeInRight 0.5s ease-out forwards;
-  animation-delay: 500ms;
+  animation: fadeInRight 0.7s ease-out forwards;
+  animation-delay: 300ms;
 }
 
 @keyframes fadeInRight {
-  0% {
+  from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(40px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.fadein-bot {
-  opacity: 0;
-  animation: fadeInBot 0.5s forwards;
-}
-
-@keyframes fadeInBot {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.fadein-1 {
-  animation-delay: 200ms;
-}
-.fadein-2 {
-  animation-delay: 400ms;
-}
-.fadein-3 {
-  animation-delay: 600ms;
-}
-.fade-500 {
-  animation-delay: 500ms;
 }
 </style>

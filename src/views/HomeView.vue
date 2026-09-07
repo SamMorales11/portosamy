@@ -28,10 +28,10 @@
           </h2>
         </div>
 
-        <!-- Short Bio -->
-        <p class="text-gray-300 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed fadein-up" style="animation-delay: 300ms">
-          A Balikpapan-based Software Engineer passionate about building impactful digital solutions. 
-          Focused on clean architecture, scalable systems, and turning ideas into real-world products.
+        <!-- Short Bio (Justify) -->
+        <p class="text-gray-300 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed text-justify fadein-up" style="animation-delay: 300ms">
+          A Balikpapan based Software Engineer passionate about building impactful digital solutions. 
+          Focused on clean architecture, scalable systems, and turning ideas into real world products.
         </p>
 
         <!-- Info Badges -->
@@ -45,7 +45,7 @@
           </span>
           <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-xs text-gray-300">
             <svg class="w-3.5 h-3.5 text-[#659cf0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 002 2z"/>
             </svg>
             3+ Years Experience
           </span>

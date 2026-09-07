@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-7xl mx-auto flex flex-col relative">
 
-    <nav class="max-w-7xl px-5 md:fixed top-0 z-[98] w-screen backdrop-blur-md bg-[#0a0a0a]/80 border-b border-[#1a1a1a]">
+    <nav class="max-w-7xl px-5 md:fixed top-0 z-[98] w-screen backdrop-blur-md bg-[#0a0a0a]/80 border-b border-[#1a1a1a] rounded-b-2xl">
       <div class="container mx-auto flex flex-wrap items-center justify-between py-3">
         <button @click="redirectToHome" class="flex">
           <span class="self-center text-lg text-[#659cf0] font-semibold whitespace-nowrap hover:text-blue-400 transition-colors duration-300">

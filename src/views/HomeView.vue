@@ -30,8 +30,8 @@
 
         <!-- Short Bio (Justify) -->
         <p class="text-gray-300 text-sm md:text-base max-w-lg mx-auto md:mx-0 leading-relaxed text-justify fadein-up" style="animation-delay: 300ms">
-          A Balikpapan based Software Engineer passionate about building impactful digital solutions. 
-          Focused on clean architecture, scalable systems, and turning ideas into real world products.
+          A Balikpapan based Full Stack Developer and aspiring Data Analyst with a strong interest in Cybersecurity. 
+          Passionate about building impactful digital solutions, turning data into insights, and creating secure, scalable systems.
         </p>
 
         <!-- Info Badges -->
@@ -103,9 +103,8 @@ export default {
   data() {
     return {
       toRotate: [
-        "Web Developer",
-        "Full-stack Engineer",
-        "Informatics Student",
+        "Full Stack Developer",
+        "Junior Data Analyst",
         "CyberSecurity Enthusiast"
       ],
       period: 2000,

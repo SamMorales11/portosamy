@@ -1,86 +1,160 @@
 <template>
-  <div class="container mx-auto p-3 md:p-8">
-    <div class="flex flex-col gap-5 md:px-20 fade-zoom-up">
+  <div class="container mx-auto px-4 md:px-8 py-8 md:py-12">
+    <div class="max-w-4xl mx-auto">
       
-      <header class="mb-4 md:mb-6 fadein-bot">
-        <div class="flex flex-col gap-2 text-left">
-          <h1 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-blue-500 inline-block">
-            Professional Experience
-          </h1>
-          <div class="flex items-center gap-4 mt-1">
-            <p class="text-sm md:text-base text-gray-400 max-w-lg">
-              A timeline of my career journey, past roles, and the impact I've made along the way.
-            </p>
-            <div class="hidden md:block h-[1px] flex-1 bg-gradient-to-r from-blue-400/50 to-transparent rounded-full"></div>
-          </div>
+      <!-- Header -->
+      <header class="mb-10 fadein-bot">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">
+          Professional Experience
+        </h1>
+        <div class="flex items-center gap-4">
+          <p class="text-sm md:text-base text-gray-400 max-w-xl">
+            A timeline of my career journey, past roles, and the impact I've made along the way.
+          </p>
+          <div class="hidden md:block h-[1px] flex-1 bg-gradient-to-r from-[#659cf0]/40 to-transparent rounded-full"></div>
         </div>
       </header>
 
-      <div v-for="job in careers" :key="job.id" class="bg-[#1e1e1f] border border-[#383838] rounded-xl p-5 md:p-6 transition-all duration-300">
-        
-        <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-          <div class="w-16 h-16 md:w-20 md:h-20 bg-white rounded-lg flex items-center justify-center p-2 shrink-0">
-            <img :src="job.logo" :alt="job.company" class="w-full h-full object-contain">
-          </div>
-          
-          <div class="flex flex-col flex-1 text-left">
-            <h2 class="text-lg md:text-xl font-bold text-white">{{ job.role }}</h2>
-            <p class="text-gray-400 text-sm md:text-base mt-1">{{ job.company }} &bull; {{ job.location }}</p>
-            <p class="text-gray-500 text-xs md:text-sm mt-2">
-              {{ job.period }} &bull; {{ job.duration }} &bull; {{ job.type }} &bull; {{ job.workplace }}
-            </p>
-            
-            <button @click="job.expanded = !job.expanded" class="mt-4 w-fit flex items-center text-sm text-gray-400 hover:text-white transition-colors">
-              <svg v-if="!job.expanded" class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-              <svg v-else class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              {{ job.expanded ? 'Hide details' : 'Show details' }}
-            </button>
-          </div>
-        </div>
+      <!-- Timeline -->
+      <div class="relative space-y-6">
+        <!-- Vertical line -->
+        <div class="absolute left-[27px] top-4 bottom-4 w-[2px] bg-[#2a2a2a] hidden md:block"></div>
 
-        <div v-show="job.expanded" class="mt-6 pt-6 border-t border-[#383838] text-left fadein-bot">
-          
-          <div class="mb-6">
-            <h3 class="text-blue-300 font-bold text-sm md:text-base mb-3 flex items-center uppercase tracking-wider">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
-              Responsibilities
-            </h3>
-            <ul class="space-y-2">
-              <li v-for="(res, idx) in job.responsibilities" :key="idx" class="flex items-start text-gray-300 text-sm md:text-base">
-                <svg class="w-4 h-4 mr-2 mt-1 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>{{ res }}</span>
-              </li>
-            </ul>
-          </div>
+        <div 
+          v-for="job in careers" 
+          :key="job.id" 
+          class="relative group"
+        >
+          <!-- Timeline dot -->
+          <div class="absolute left-[19px] top-8 w-[18px] h-[18px] rounded-full bg-[#0a0a0a] border-[3px] border-[#659cf0] z-10 hidden md:block"></div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 class="text-blue-300 font-bold text-sm md:text-base mb-3 flex items-center uppercase tracking-wider">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                What I Learned
-              </h3>
-              <ul class="space-y-2">
-                <li v-for="(learn, idx) in job.learned" :key="idx" class="flex items-start text-gray-300 text-sm md:text-base">
-                  <svg class="w-4 h-4 mr-2 mt-1 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>{{ learn }}</span>
-                </li>
-              </ul>
+          <!-- Card -->
+          <div 
+            class="md:ml-16 bg-[#141414] border border-[#2a2a2a] rounded-2xl p-5 md:p-6 transition-all duration-300 hover:border-[#659cf0]/40 hover:shadow-[0_0_30px_rgba(101,156,240,0.08)]"
+          >
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
+              
+              <!-- Logo -->
+              <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-xl flex items-center justify-center p-2 shrink-0 shadow-sm">
+                <img :src="job.logo" :alt="job.company" class="w-full h-full object-contain">
+              </div>
+              
+              <!-- Content -->
+              <div class="flex-1 text-left">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                  <div>
+                    <h2 class="text-lg md:text-xl font-bold text-white leading-tight">
+                      {{ job.role }}
+                    </h2>
+                    <p class="text-[#659cf0] text-sm md:text-base mt-0.5 font-medium">
+                      {{ job.company }}
+                    </p>
+                  </div>
+                  
+                  <!-- Type Badge -->
+                  <span class="self-start px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#659cf0]/10 text-[#659cf0] border border-[#659cf0]/20">
+                    {{ job.type }}
+                  </span>
+                </div>
+
+                <p class="text-gray-500 text-xs md:text-sm mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span>{{ job.period }}</span>
+                  <span class="text-gray-600">•</span>
+                  <span>{{ job.duration }}</span>
+                  <span class="text-gray-600">•</span>
+                  <span>{{ job.workplace }}</span>
+                  <span class="text-gray-600">•</span>
+                  <span>{{ job.location }}</span>
+                </p>
+                
+                <!-- Toggle Button -->
+                <button 
+                  @click="job.expanded = !job.expanded" 
+                  class="mt-4 flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#659cf0] transition-colors duration-200"
+                >
+                  <svg 
+                    class="w-4 h-4 transition-transform duration-300"
+                    :class="{ 'rotate-90': job.expanded }"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                  {{ job.expanded ? 'Hide details' : 'Show details' }}
+                </button>
+              </div>
             </div>
 
-            <div>
-              <h3 class="text-blue-300 font-bold text-sm md:text-base mb-3 flex items-center uppercase tracking-wider">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                Impact
-              </h3>
-              <ul class="space-y-2">
-                <li v-for="(imp, idx) in job.impact" :key="idx" class="flex items-start text-gray-300 text-sm md:text-base">
-                  <svg class="w-4 h-4 mr-2 mt-1 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>{{ imp }}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+            <!-- Expanded Details -->
+            <transition name="expand">
+              <div v-if="job.expanded" class="mt-6 pt-6 border-t border-[#2a2a2a]">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                  
+                  <!-- Responsibilities -->
+                  <div>
+                    <h3 class="text-[#659cf0] font-semibold text-sm mb-3 flex items-center gap-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                      </svg>
+                      Responsibilities
+                    </h3>
+                    <ul class="space-y-2">
+                      <li 
+                        v-for="(res, idx) in job.responsibilities" 
+                        :key="idx" 
+                        class="flex items-start gap-2 text-gray-300 text-sm leading-relaxed"
+                      >
+                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#659cf0] shrink-0"></span>
+                        <span>{{ res }}</span>
+                      </li>
+                    </ul>
+                  </div>
 
+                  <!-- What I Learned -->
+                  <div>
+                    <h3 class="text-[#659cf0] font-semibold text-sm mb-3 flex items-center gap-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                      </svg>
+                      What I Learned
+                    </h3>
+                    <ul class="space-y-2">
+                      <li 
+                        v-for="(learn, idx) in job.learned" 
+                        :key="idx" 
+                        class="flex items-start gap-2 text-gray-300 text-sm leading-relaxed"
+                      >
+                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#659cf0] shrink-0"></span>
+                        <span>{{ learn }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Impact -->
+                  <div>
+                    <h3 class="text-[#659cf0] font-semibold text-sm mb-3 flex items-center gap-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                      </svg>
+                      Impact
+                    </h3>
+                    <ul class="space-y-2">
+                      <li 
+                        v-for="(imp, idx) in job.impact" 
+                        :key="idx" 
+                        class="flex items-start gap-2 text-gray-300 text-sm leading-relaxed"
+                      >
+                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#659cf0] shrink-0"></span>
+                        <span>{{ imp }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +171,7 @@ export default {
           id: 1,
           role: 'Artificial Intelligence Engineer',
           company: 'Badan Pusat Statistik (Central Bureau of Statistics)',
-          location: 'Balikpapan, Indonesia ID',
+          location: 'Balikpapan, Indonesia',
           period: 'Jul 2025 - Dec 2025',
           duration: '6 Months',
           type: 'Internship',
@@ -111,7 +185,7 @@ export default {
           ],
           learned: [
             "Deepened practical knowledge of Natural Language Processing (NLP) and AI model deployment within a large scale.",
-            "Gained hands-on experience synthesizing geospatial data with machine learning models to generate real-time.",
+            "Gained hands-on experience synthesizing geospatial data with machine learning models to generate real-time insights.",
             "Strengthened cross-functional collaboration skills by working alongside diverse teams to deliver a national-level digital infrastructure project."
           ],
           impact: [
@@ -122,8 +196,8 @@ export default {
         {
           id: 2,
           role: 'Front-End Developer',
-          company: ' Penajam Paser Utara Regency Government',
-          location: 'Penajam Paser Utara, Indonesia ID',
+          company: 'Penajam Paser Utara Regency Government',
+          location: 'Penajam Paser Utara, Indonesia',
           period: 'May 2024 - Nov 2024',
           duration: '7 Months',
           type: 'Practical Work',
@@ -135,19 +209,19 @@ export default {
             "Applied technical software development skills to build digital solutions aimed at empowering traditional businesses."
           ],
           learned: [
-            "Gained practical experience translating technical knowledge into real-world applications during a two-month government internship.",
-            "Deepened my understanding of how targeted technological solutions can directly drive local economic growth and community development."
+            "Gained practical experience translating technical knowledge into real-world applications during a government internship.",
+            "Deepened understanding of how targeted technological solutions can drive local economic growth."
           ],
           impact: [
-            "Expanded digital market access for regional UMKMs, successfully bridging the gap between traditional commerce and the digital economy.",
-            "Delivered a functional platform that actively supports local government initiatives in driving community economic empowerment."
+            "Helped digitize and expand market access for local UMKM through a modern e-commerce platform.",
+            "Contributed to a more inclusive digital economy in the region."
           ]
         },
         {
           id: 3,
           role: 'Front-End Developer Intern',
-          company: ' Media Selaras',
-          location: 'Jakarta, Indonesia ID',
+          company: 'Media Selaras',
+          location: 'Jakarta, Indonesia',
           period: 'Jul 2024 - Nov 2024',
           duration: '5 Months',
           type: 'Internship',
@@ -155,9 +229,8 @@ export default {
           logo: '/img/selaras 1.jpg', 
           expanded: false,
           responsibilities: [
-            "Developed the front-end interface for an online learning platform focused on thesis consultation and university entrance exam preparation.",
-            "Implemented user-centric designs and optimized web functionality to ensure a seamless user experience.",
-            "Collaborated within a multidisciplinary team to translate project requirements into accessible and engaging web features."
+            "Developed and maintained front-end components for an educational technology platform.",
+            "Collaborated with designers and backend developers to deliver responsive and accessible interfaces."
           ],
           learned: [
             "Enhanced practical skills in applying user-centered design principles within a real-world educational technology environment.",
@@ -171,8 +244,8 @@ export default {
         {
           id: 4,
           role: 'Project Management Officer',
-          company: ' Ambivers Foundation',
-          location: 'Jakarta, Indonesia ID',
+          company: 'Ambivers Foundation',
+          location: 'Jakarta, Indonesia',
           period: 'Apr 2025 - Oct 2025',
           duration: '7 Months',
           type: 'Internship',
@@ -200,24 +273,11 @@ export default {
 </script>
 
 <style scoped>
-@keyframes fadeZoomUp {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.fade-zoom-up {
-  animation: fadeZoomUp 0.8s ease-in-out;
-}
-
 .fadein-bot {
   opacity: 0;
   animation: fadeInBot 0.5s forwards;
 }
+
 @keyframes fadeInBot {
   from {
     opacity: 0;
@@ -227,5 +287,26 @@ export default {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+}
+
+/* Expand transition */
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-8px);
+}
+
+.expand-enter-to,
+.expand-leave-from {
+  opacity: 1;
+  max-height: 1000px;
+  transform: translateY(0);
 }
 </style>

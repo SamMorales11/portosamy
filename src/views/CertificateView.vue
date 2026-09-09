@@ -1,71 +1,107 @@
 <template>
-  <div class="container mx-auto p-3 md:p-8">
-    <div class="flex flex-col-reverse md:flex-row relative">
-      <div class="w-full md:w-2/3">
-        <div class="flex flex-col gap-10 md:px-20 fade-zoom-up">
-          
-          <div v-for="(org, index) in certificatesData" :key="index" :id="'org-' + index" class="flex flex-col scroll-mt-28 md:scroll-mt-32">
-            <div class="flex items-center mb-5">
-              <div class="h-[1px] w-10 bg-blue-500 mr-2"></div>
-              <h2 class="text-xl md:text-2xl text-white font-bold">{{ org.organization }}</h2>
+  <div class="container mx-auto px-4 md:px-8 py-8 md:py-12">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <header class="mb-10 fadein-bot">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
+          My Certificates
+        </h1>
+        <p class="text-sm md:text-base text-gray-400 max-w-xl">
+          A collection of certifications and achievements I've earned from various organizations and platforms.
+        </p>
+      </header>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Filter -->
+        <aside class="lg:w-64 shrink-0">
+          <div class="sticky top-24 bg-[#141414] border border-[#2a2a2a] rounded-2xl p-5">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+              Issuing Organizations
+            </h3>
+            <div class="flex flex-wrap lg:flex-col gap-2">
+              <button
+                v-for="(org, index) in certificatesData"
+                :key="index"
+                @click="scrollToSection(index)"
+                class="text-left px-3 py-2 rounded-lg text-sm transition-all duration-200"
+                :class="activeOrg === index 
+                  ? 'bg-[#659cf0]/15 text-[#659cf0] border border-[#659cf0]/30' 
+                  : 'text-gray-400 hover:text-white hover:bg-[#1a1a1a]'"
+              >
+                {{ org.organization }}
+              </button>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div v-for="cert in org.certificates" :key="cert.id" class="flex flex-col bg-[#1e1e1f] border border-[#383838] rounded-xl text-left text-white p-4 transition-all duration-300 hover:bg-[#282828] hover:scale-105 hover:-translate-y-1">
-                <div class="w-full h-48 md:h-40 overflow-hidden rounded-lg mb-4 bg-white/5">
-                  <img :src="cert.image" alt="Certificate" class="w-full h-full object-cover">
+          </div>
+        </aside>
+
+        <!-- Certificates List -->
+        <div class="flex-1 space-y-12">
+          <section
+            v-for="(org, index) in certificatesData"
+            :key="index"
+            :id="'org-' + index"
+            class="scroll-mt-28"
+          >
+            <!-- Organization Title -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="h-[2px] w-8 bg-[#659cf0] rounded-full"></div>
+              <h2 class="text-xl md:text-2xl font-bold text-white">
+                {{ org.organization }}
+              </h2>
+            </div>
+
+            <!-- Certificates Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div
+                v-for="cert in org.certificates"
+                :key="cert.id"
+                class="group bg-[#141414] border border-[#2a2a2a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#659cf0]/40 hover:shadow-[0_0_25px_rgba(101,156,240,0.08)] hover:-translate-y-1"
+              >
+                <!-- Certificate Image -->
+                <div class="aspect-[4/3] overflow-hidden bg-[#1a1a1a]">
+                  <img
+                    :src="cert.image"
+                    :alt="cert.title"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-                
-                <div class="w-full flex flex-col flex-1">
-                  <div class="text-xs mb-2 text-slate-400 flex items-center italic">
+
+                <!-- Content -->
+                <div class="p-4 flex flex-col">
+                  <p class="text-xs text-gray-500 mb-1">
                     {{ cert.date }}
-                  </div>
-                  <h1 class="text-sm md:text-base text-blue-300 font-bold mb-2 paraf">{{ cert.title }}</h1>
-                  
-                  <div class="flex items-center justify-between mt-auto pt-3">
-                    <div class="text-xs text-[#c1c1c1]">
-                      {{ cert.credentialId }}
-                    </div>
-                    
-                    <a v-if="cert.link" :href="cert.link" target="_blank" rel="noreferrer"
-                       title="View Certificate" class="transition-all text-amber-50 hover:text-white">
-                      <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                        height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                  </p>
+                  <h3 class="text-sm md:text-base font-semibold text-white leading-snug mb-2 line-clamp-2">
+                    {{ cert.title }}
+                  </h3>
+
+                  <div class="flex items-center justify-between mt-auto pt-3 border-t border-[#2a2a2a]">
+                    <span class="text-xs text-gray-500 truncate max-w-[70%]">
+                      {{ cert.credentialId || 'Certificate' }}
+                    </span>
+
+                    <a
+                      v-if="cert.link"
+                      :href="cert.link"
+                      target="_blank"
+                      rel="noreferrer"
+                      class="text-gray-400 hover:text-[#659cf0] transition-colors"
+                      title="View Certificate"
+                    >
+                      <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
                         <line x1="10" y1="14" x2="21" y2="3"></line>
                       </svg>
                     </a>
                   </div>
-
                 </div>
               </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-      
-      <div class="w-full md:w-1/3 h-fit p-8 md:sticky md:top-24">
-        <div class="flex flex-col text-left">
-          <div class="bg-clip-text bg-gradient-to-r from-white to-blue-400 text-transparent text-2xl font-bold mb-3">
-            My Certificates
-          </div>
-          <div class="text-slate-400 text-sm">
-            A collection of certifications and achievements I've earned from various organizations and platforms.
-          </div>
-          <div class="h-[1px] mt-7 mb-7 w-20 bg-blue-400 mr-2"></div>
-          
-          <div class="hidden md:block">
-            <div class="text-white text-md font-semibold mb-3">Issuing Organizations</div>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span v-for="(org, index) in certificatesData" :key="index"
-                @click="scrollToSection(index)"
-                class="py-2 px-3 rounded-2xl bg-[#1e1e1f] text-white text-xs cursor-pointer hover:bg-[#282828] hover:text-blue-300 transition-all duration-300">
-                {{ org.organization }}
-              </span>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -77,6 +113,7 @@ export default {
   name: 'CertificateView',
   data() {
     return {
+      activeOrg: 0,
       certificatesData: [
         {
           organization: "Dicoding Indonesia",
@@ -140,91 +177,67 @@ export default {
               date: "Februari 2025", 
               credentialId: "Cred ID: HUI28S4JBN99", 
               image: "/img/coursera 1.jpeg",
-              link: "https://drive.google.com/file/d/1UOXNUILwI-CeKTvgsJNUVtLHT6B_Awrd/view?usp=sharing"
-            },
-            { 
-              id: 8, 
-              title: "Financial Markets", 
-              date: "Februari 2025", 
-              credentialId: "Cred ID: JJ23RGQYIMM7", 
-              image: "/img/coursera 2.jpeg",
-              link: "https://drive.google.com/file/d/1raa3Zo-jHf0fJpTajYEnT-8X1mEIL6la/view?usp=sharing"
-            },
-            { 
-              id: 9, 
-              title: "Mathematical Thinking", 
-              date: "April 2025", 
-              credentialId: "Cred ID: F5N4J6Z39PQ0", 
-              image: "/img/coursera 3.jpeg",
-              link: "https://drive.google.com/file/d/1W9TR10Fi0GsjvzVaudcqvRqaNHu02PVb/view?usp=sharing"
-            },
-            { 
-              id: 10, 
-              title: "Cryptography", 
-              date: "Februari 2025", 
-              credentialId: "Cred ID: TXAAF0VJN9Z1", 
-              image: "/img/coursera 4.jpeg",
-              link: "https://drive.google.com/file/d/1Jlz8uF47_MVx5RdhPgDZFufWB3MrN87u/view?usp=sharing"
-            },
+              link: "https://drive.google.com/file/d/1dHRWBehlr9KR_EWiha-5DMj8_C87cWVu/view?usp=sharing"
+            }
           ]
         },
         {
           organization: "Cisco Academy",
           certificates: [
             { 
-              id: 7, 
-              title: "Cyber Threat Management", 
-              date: "April 2024",  
+              id: 8, 
+              title: "Junior Cybersecurity Analyst Career Path", 
+              date: "Januari 2025", 
               image: "/img/cisco 1.jpeg",
-              link: "https://drive.google.com/file/d/12lJNyMs2T9HFH4DszbCjk5dZU2v4wGn7/view?usp=sharing"
+              link: "https://drive.google.com/file/d/1Ukr6NF-AfP5Dwbq3zmFjcYRuWQIk-Jvv/view?usp=sharing"
             },
             { 
-              id: 8, 
+              id: 9, 
               title: "Ethical Hacker", 
               date: "Januari 2025", 
               image: "/img/cisco 2.jpeg",
               link: "https://drive.google.com/file/d/1Ukr6NF-AfP5Dwbq3zmFjcYRuWQIk-Jvv/view?usp=sharing"
             },
             { 
-              id: 9, 
+              id: 10, 
               title: "English for IT", 
               date: "Maret 2025", 
               image: "/img/cisco 3.jpeg",
               link: "https://drive.google.com/file/d/1Ybq-Eu7wKMEbLSYpGn6Ig4XKulceDIxV/view?usp=sharing"
             },
             { 
-              id: 10, 
+              id: 11, 
               title: "Introduction to Cybersecurity", 
               date: "Februari 2025", 
               image: "/img/cisco 4.jpeg",
               link: "https://drive.google.com/file/d/1sY1_Tcw5-Ka4U5g_oSi8akdIHGqi7YfT/view?usp=sharing"
-            },
+            }
           ]
         },
         {
           organization: "Udemy",
           certificates: [
             { 
-              id: 7, 
+              id: 12, 
               title: "AI Engineering Masterclass: From Zero to AI Hero", 
               date: "Juli 2025",  
               image: "/img/udemy 1.jpeg",
               link: "https://drive.google.com/file/d/12AUFSHlN9xPm4oXa9CCTyxpx7wgtQiYk/view?usp=sharing"
             },
             { 
-              id: 8, 
+              id: 13, 
               title: "AI & Quantum Computing Mastery Bootcamp", 
               date: "Juli 2025", 
               image: "/img/udemy 2.jpeg",
               link: "https://drive.google.com/file/d/1hrJxirq2BRWSKCxmKB7cUC9VzF8WNlac/view?usp=sharing"
-            },
+            }
           ]
         },
         {
           organization: "Semrush Academy",
           certificates: [
             { 
-              id: 7, 
+              id: 14, 
               title: "International SEO", 
               date: "Juli 2025",
               credentialId: "Cred ID: 6b7a3266cb",
@@ -232,40 +245,40 @@ export default {
               link: "https://drive.google.com/file/d/1sQA1gZ-WYbSyKx_iQ0ATLAMJ6wpEsoEG/view?usp=sharing"
             },
             { 
-              id: 8, 
+              id: 15, 
               title: "Mastering Youtube Search Trends and SEO Strategis", 
               date: "Juli 2025",
               credentialId: "Cred ID: 8ed676790e",
               image: "/img/semrush 2.jpeg",
               link: "https://drive.google.com/file/d/1GRzNn4WEUlhW6KDvpL-l9waKgQXtDkje/view?usp=sharing"
-            },
+            }
           ]
         },
         {
           organization: "IBM Skills Build",
           certificates: [
             { 
-              id: 7, 
+              id: 16, 
               title: "Classifying Data Using IBM Granite", 
               date: "Agustus 2025",
               image: "/img/ibm 1.jpeg",
               link: "https://drive.google.com/file/d/1JvS5kZi3GMlBkvXC-END3MRhn_IPzpdY/view?usp=sharing"
             },
             { 
-              id: 8, 
+              id: 17, 
               title: "Summarizing Data Using IBM Granite", 
               date: "Agustus 2025",
               image: "/img/ibm 1.jpeg",
               link: "https://drive.google.com/file/d/1_lL6KnIdLcJ84znUaH4G73At5ZBP-u4y/view?usp=sharing"
-            },
+            }
           ]
-        },
+        }
       ]
     }
   },
-  // Tambahkan methods scrollToSection di sini
   methods: {
     scrollToSection(index) {
+      this.activeOrg = index;
       const element = document.getElementById('org-' + index);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -276,30 +289,27 @@ export default {
 </script>
 
 <style scoped>
-.paraf {
+.fadein-bot {
+  opacity: 0;
+  animation: fadeInBot 0.5s forwards;
+}
+
+@keyframes fadeInBot {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   overflow: hidden;
-}
-
-@keyframes fadeZoomUp {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.fade-zoom-up {
-  animation: fadeZoomUp 1s ease-in-out;
-}
-
-svg:hover {
-  stroke: #ffdb70;
 }
 </style>

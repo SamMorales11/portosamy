@@ -24,10 +24,10 @@
           <!-- Bio -->
           <div class="flex-1 text-left">
             <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4 text-justify">
-              Hi everyone! My name is <span class="text-white font-medium">Samuel Benedicto Siahaan</span>, a Balikpapan based Software Engineer dedicated to building impactful digital solutions. I have 3 years of experience in web development and data science. I really enjoy what I do right now in my opinion, creating programs is not just a job, but also an art that has aesthetic value.
+              Hi everyone! My name is <span class="text-white font-medium">Samuel Benedicto Siahaan</span>, an Informatics student and Balikpapan based Full-Stack Developer with an active focus on Data Analytics and Cybersecurity. Over the past three years, I have dedicated myself to engineering impactful digital solutions, approaching software development not merely as a technical task, but as a craft that balances functional precision with aesthetic elegance.
             </p>
             <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4 text-justify">
-              My primary focus is crafting software architecture that doesn’t just work but is well structured, maintainable, and scalable to meet business needs. I believe that high quality code must go hand in hand with system efficiency and logical clarity. I blend technical expertise with proactive communication, critical thinking, and effective time management.
+              My core focus centers on designing maintainable, scalable architectures backed by data driven insights and security first principles. I combine full-stack development expertise with analytical rigor to solve complex business problems, maintaining high standards for code quality, system efficiency, and clear, proactive communication.
             </p>
             <p class="text-gray-400 text-sm mt-6">
               Best regards,
@@ -228,12 +228,30 @@ export default {
           imageUrl: 'https://img.icons8.com/?size=100&id=MWiBjkuHeMVq&format=png&color=000000',
           status: 'Intermediate'
         },
+        {
+          id: 14,
+          name: 'Pandas',
+          imageUrl: 'https://img.icons8.com/?size=100&id=xSkewUSqtErH&format=png&color=000000',
+          status: 'Advanced'
+        },
+         {
+          id: 15,
+          name: 'Numpy',
+          imageUrl: 'https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000',
+          status: 'Advanced'
+        },
+         {
+          id: 16,
+          name: 'Linux',
+          imageUrl: 'https://img.icons8.com/?size=100&id=17842&format=png&color=000000',
+          status: 'Intermediate'
+        },
       ],
       tools: [
         {
           id: 1,
           name: 'Git',
-          imageUrl: 'https://cdn-icons-png.flaticon.com/512/2111/2111288.png',
+          imageUrl: 'https://img.icons8.com/?size=100&id=6Qr2kBSBemvq&format=png&color=000000',
           status: 'Version Control'
         },
         {
@@ -274,9 +292,39 @@ export default {
         },
         {
           id: 8,
-          name: 'Android Studio',
-          imageUrl: 'https://img.icons8.com/?size=100&id=1LAX3PYMg2iA&format=png&color=000000',
-          status: 'Mobile IDE'
+          name: 'Postman',
+          imageUrl: 'https://img.icons8.com/?size=100&id=QEQQKirln6Tf&format=png&color=000000',
+          status: 'API Testing'
+        },
+         {
+          id: 9,
+          name: 'Visual Studio Code',
+          imageUrl: 'https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000',
+          status: 'Source Code Editor'
+        },
+        {
+          id: 10,
+          name: 'Jupyter Notebook',
+          imageUrl: 'https://img.icons8.com/?size=100&id=J0SgMWzAxqFj&format=png&color=000000',
+          status: 'Data Analysis'
+        },
+         {
+          id: 11,
+          name: 'Tableau',
+          imageUrl: 'https://img.icons8.com/?size=100&id=9Kvi1p1F0tUo&format=png&color=000000',
+          status: 'Data Visualization'
+        },
+        {
+          id: 12,
+          name: 'Kali Linux',
+          imageUrl: 'https://img.icons8.com/?size=100&id=qBWtR72kluCU&format=png&color=000000',
+          status: 'Penetration Testing'
+        },
+         {
+          id: 13,
+          name: 'Arch Linux',
+          imageUrl: 'https://img.icons8.com/?size=100&id=uIXgLv5iSlLJ&format=png&color=000000',
+          status: 'Development Environment'
         },
       ]
     };

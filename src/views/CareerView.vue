@@ -5,11 +5,11 @@
       <!-- Header -->
       <header class="mb-10 fadein-bot">
         <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">
-          Professional Experience
+          {{ t().career.title }}
         </h1>
         <div class="flex items-center gap-4">
           <p class="text-sm md:text-base text-gray-400 max-w-xl">
-            A timeline of my career journey, past roles, and the impact I've made along the way.
+            {{ t().career.subtitle }}
           </p>
           <div class="hidden md:block h-[1px] flex-1 bg-gradient-to-r from-[#659cf0]/40 to-transparent rounded-full"></div>
         </div>
@@ -81,7 +81,7 @@
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                   </svg>
-                  {{ job.expanded ? 'Hide details' : 'Show details' }}
+                  {{ job.expanded ? t().career.hideDetails : t().career.showDetails }}
                 </button>
               </div>
             </div>
@@ -97,7 +97,7 @@
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                       </svg>
-                      Responsibilities
+                      {{ t().career.responsibilities }}
                     </h3>
                     <ul class="space-y-2">
                       <li 
@@ -117,7 +117,7 @@
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                       </svg>
-                      What I Learned
+                      {{ t().career.learned }}
                     </h3>
                     <ul class="space-y-2">
                       <li 
@@ -137,7 +137,7 @@
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                       </svg>
-                      Impact
+                      {{ t().career.impact }}
                     </h3>
                     <ul class="space-y-2">
                       <li 
@@ -164,6 +164,7 @@
 <script>
 export default {
   name: 'CareerView',
+  inject: ['t'],
   data() {
     return {
       careers: [
@@ -181,16 +182,16 @@ export default {
           responsibilities: [
             "Spearheaded the development and implementation of a Geotagging-Based Business Data System integrated with an AI Chatbot for the national Economic Census.",
             "Designed and deployed NLP driven chatbot solutions to automate complex workflows, including data collection, validation, and user interaction.",
-            "Collaborated closely with cross-functional teams to integrate geospatial data analytics and AI models into cohesive, functional systems."
+            "Collaborated closely with cross functional teams to integrate geospatial data analytics and AI models into cohesive, functional systems."
           ],
           learned: [
             "Deepened practical knowledge of Natural Language Processing (NLP) and AI model deployment within a large scale.",
-            "Gained hands-on experience synthesizing geospatial data with machine learning models to generate real-time insights.",
-            "Strengthened cross-functional collaboration skills by working alongside diverse teams to deliver a national-level digital infrastructure project."
+            "Gained hands on experience synthesizing geospatial data with machine learning models to generate real time insights.",
+            "Strengthened cross functional collaboration skills by working alongside diverse teams to deliver a national level digital infrastructure project."
           ],
           impact: [
             "Significantly enhanced the efficiency and accuracy of the national Economic Census process by automating data collection and validation.",
-            "Delivered real-time business mapping capabilities, empowering policymakers and stakeholders with robust, data-driven decision-making tools."
+            "Delivered real time business mapping capabilities, empowering policymakers and stakeholders with robust, data driven decision making tools."
           ]
         },
         {
@@ -205,7 +206,7 @@ export default {
           logo: '/img/ppu 1.png', 
           expanded: false,
           responsibilities: [
-            "Collaborated in developing a scalable, user-friendly e-commerce platform for local micro, small, and medium enterprises (UMKM).",
+            "Collaborated in developing a scalable, user friendly e-commerce platform for local micro, small, and medium enterprises (UMKM).",
             "Applied technical software development skills to build digital solutions aimed at empowering traditional businesses."
           ],
           learned: [
@@ -229,15 +230,15 @@ export default {
           logo: '/img/selaras 1.jpg', 
           expanded: false,
           responsibilities: [
-            "Developed and maintained front-end components for an educational technology platform.",
+            "Developed and maintained front end components for an educational technology platform.",
             "Collaborated with designers and backend developers to deliver responsive and accessible interfaces."
           ],
           learned: [
-            "Enhanced practical skills in applying user-centered design principles within a real-world educational technology environment.",
-            "Gained valuable experience in cross-functional collaboration to successfully build and optimize front-end performance."
+            "Enhanced practical skills in applying user centered design principles within a real world educational technology environment.",
+            "Gained valuable experience in cross functional collaboration to successfully build and optimize front-end performance."
           ],
           impact: [
-            "Improved academic accessibility for students by helping deliver a structured, easy-to-navigate platform for educational support.",
+            "Improved academic accessibility for students by helping deliver a structured, easy to navigate platform for educational support.",
             "Contributed to an intuitive and impactful user experience that directly advanced the platform's goal of enhancing academic delivery."
           ]
         },
@@ -258,12 +259,12 @@ export default {
             "Managed project budgets, resources, and key deliverables to ensure completion on time and strictly within scope."
           ],
           learned: [
-            "Mastered effective cross-functional communication and stakeholder collaboration to drive continuous project success.",
+            "Mastered effective cross functional communication and stakeholder collaboration to drive continuous project success.",
             "Developed strong expertise in proactive risk management and continuous improvement strategies throughout the project lifecycle."
           ],
           impact: [
-            "Consistently delivered high-quality projects that met or exceeded stakeholder expectations.",
-            "Enhanced overall project outcomes and long-term stakeholder satisfaction through regular evaluation and process optimization."
+            "Consistently delivered high quality projects that met or exceeded stakeholder expectations.",
+            "Enhanced overall project outcomes and long term stakeholder satisfaction through regular evaluation and process optimization."
           ]
         },
       ]
@@ -289,7 +290,6 @@ export default {
   }
 }
 
-/* Expand transition */
 .expand-enter-active,
 .expand-leave-active {
   transition: all 0.3s ease;

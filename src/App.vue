@@ -15,7 +15,26 @@
             </span>
           </button>
 
-          <div class="flex items-center gap-4 md:order-2">
+          <div class="flex items-center gap-3 md:order-2">
+            <!-- Sound Toggle -->
+            <button
+              @click="toggleSound"
+              class="w-9 h-9 rounded-lg flex items-center justify-center border border-[#2a2a2a] bg-[#1a1a1a] text-gray-400 hover:text-[#659cf0] hover:border-[#659cf0]/40 transition-all"
+              :title="soundEnabled ? 'Sound On' : 'Sound Off'"
+            >
+              <!-- Speaker On -->
+              <svg v-if="soundEnabled" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+              <!-- Speaker Off -->
+              <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
+
             <!-- Language Toggle -->
             <div class="flex items-center bg-[#1a1a1a] rounded-lg p-0.5 border border-[#2a2a2a]">
               <button
@@ -47,32 +66,32 @@
           <div class="hidden md:flex justify-between items-center w-full md:w-auto md:order-1" id="mobile-menu-3">
             <ul class="flex-col md:flex-row flex md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
               <li>
-                <router-link to="/" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.home }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/about" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/about" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.about }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/portfolio" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/portfolio" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.portfolio }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/career" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/career" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.career }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/certificate" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/certificate" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.certificate }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/contact" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300">
+                <router-link to="/contact" class="nav-link text-gray-400 hover:text-white block py-2 md:py-0 transition-colors duration-300" @click="playClick">
                   {{ t.nav.contact }}
                 </router-link>
               </li>
@@ -115,19 +134,19 @@
     <!-- Mobile Bottom Navigation -->
     <footer class="block md:hidden fixed bottom-0 left-0 right-0 rounded-t-2xl border-t border-[#2a2a2a] bg-[#0a0a0a]/90 backdrop-blur-md z-[99]">
       <nav class="flex justify-around py-3 text-[11px]">
-        <router-link to="/" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors">
+        <router-link to="/" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors" @click="playClick">
           <span>{{ t.nav.home }}</span>
         </router-link>
-        <router-link to="/about" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors">
+        <router-link to="/about" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors" @click="playClick">
           <span>{{ t.nav.about }}</span>
         </router-link>
-        <router-link to="/portfolio" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors">
+        <router-link to="/portfolio" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors" @click="playClick">
           <span>{{ t.nav.portfolio }}</span>
         </router-link>
-        <router-link to="/career" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors">
+        <router-link to="/career" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors" @click="playClick">
           <span>{{ t.nav.career }}</span>
         </router-link>
-        <router-link to="/contact" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors">
+        <router-link to="/contact" class="flex flex-col items-center gap-0.5 text-gray-400 hover:text-[#659cf0] transition-colors" @click="playClick">
           <span>{{ t.nav.contact }}</span>
         </router-link>
       </nav>
@@ -149,7 +168,9 @@ export default {
       isLoading: false,
       scrollProgress: 0,
       showBackToTop: false,
-      lang: localStorage.getItem('lang') || 'en'
+      lang: localStorage.getItem('lang') || 'en',
+      soundEnabled: localStorage.getItem('soundEnabled') !== 'false',
+      audioCtx: null
     }
   },
   computed: {
@@ -161,7 +182,8 @@ export default {
     return {
       lang: () => this.lang,
       t: () => this.t,
-      setLang: this.setLang
+      setLang: this.setLang,
+      playClick: this.playClick
     }
   },
   watch: {
@@ -173,22 +195,70 @@ export default {
     }
   },
   methods: {
+    // ===== Sound =====
+    initAudio() {
+      if (!this.audioCtx) {
+        this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    },
+    playClick() {
+      if (!this.soundEnabled) return;
+      try {
+        this.initAudio();
+        const ctx = this.audioCtx;
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        // Soft professional click
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, ctx.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.08);
+
+        gainNode.gain.setValueAtTime(0.08, ctx.currentTime); // volume rendah
+        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.08);
+      } catch (e) {
+        // ignore
+      }
+    },
+    toggleSound() {
+      this.soundEnabled = !this.soundEnabled;
+      localStorage.setItem('soundEnabled', this.soundEnabled);
+      if (this.soundEnabled) {
+        this.playClick(); // feedback saat dinyalakan
+      }
+    },
+
+    // ===== Language =====
     setLang(lang) {
       this.lang = lang;
       localStorage.setItem('lang', lang);
+      this.playClick();
     },
+
     redirectToHome() {
-      this.$router.push('/')
+      this.$router.push('/');
+      this.playClick();
     },
+
     handleScroll() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       this.scrollProgress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       this.showBackToTop = scrollTop > 400;
     },
+
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.playClick();
     },
+
+    // ===== Canvas Particles =====
     initCanvas() {
       const canvas = this.$refs.dotCanvas;
       if (!canvas) return;

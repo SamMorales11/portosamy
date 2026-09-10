@@ -94,8 +94,8 @@ export default {
   data() {
     return {
       toRotate: [
-        "Web Developer",
-        "Full-stack Engineer",
+        "Full-Stack Developer",
+        "Data Analyst",
         "Informatics Student",
         "CyberSecurity Enthusiast"
       ],

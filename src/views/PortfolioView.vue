@@ -3,19 +3,34 @@
     <div class="max-w-6xl mx-auto">
       
       <!-- Header -->
-      <header class="mb-10 text-center md:text-left fadein-bot">
+      <header class="mb-8 text-center md:text-left fadein-bot">
         <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
-          Past Project Experience
+          {{ t().portfolio.title }}
         </h1>
         <p class="text-sm md:text-base text-gray-400">
-          Explore the projects I've worked on so far
+          {{ t().portfolio.subtitle }}
         </p>
       </header>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button
+          v-for="cat in categories"
+          :key="cat.key"
+          @click="activeCategory = cat.key"
+          class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+          :class="activeCategory === cat.key 
+            ? 'bg-[#659cf0] text-white shadow-[0_0_15px_rgba(101,156,240,0.3)]' 
+            : 'bg-[#1a1a1a] text-gray-400 hover:text-white hover:bg-[#252525]'"
+        >
+          {{ cat.label }}
+        </button>
+      </div>
 
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="item in items"
+          v-for="item in filteredItems"
           :key="item.id"
           class="group bg-[#141414] border border-[#2a2a2a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-[#659cf0]/40 hover:shadow-[0_0_30px_rgba(101,156,240,0.1)] hover:-translate-y-1 flex flex-col"
         >
@@ -30,9 +45,14 @@
 
           <!-- Content -->
           <div class="p-5 flex flex-col flex-1">
-            <h3 class="text-lg font-bold text-white mb-2">
-              {{ item.name }}
-            </h3>
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <h3 class="text-lg font-bold text-white">
+                {{ item.name }}
+              </h3>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-[#659cf0]/10 text-[#659cf0] border border-[#659cf0]/20 whitespace-nowrap">
+                {{ item.category }}
+              </span>
+            </div>
 
             <!-- Description -->
             <p
@@ -47,7 +67,7 @@
               @click="item.expanded = !item.expanded"
               class="text-left text-sm text-[#659cf0] hover:text-blue-400 mt-2 mb-1 transition-colors font-medium"
             >
-              {{ item.expanded ? 'Show less' : 'Read more' }}
+              {{ item.expanded ? t().portfolio.showLess : t().portfolio.readMore }}
             </button>
 
             <!-- Footer -->
@@ -89,6 +109,11 @@
           </div>
         </div>
       </div>
+
+      <!-- Empty State -->
+      <div v-if="filteredItems.length === 0" class="text-center py-16 text-gray-500">
+        {{ t().portfolio.empty }}
+      </div>
     </div>
   </div>
 </template>
@@ -96,8 +121,10 @@
 <script>
 export default {
   name: 'PortfolioView',
+  inject: ['t'],
   data() {
     return {
+      activeCategory: 'All',
       items: [
         {
           id: 1,
@@ -107,6 +134,7 @@ export default {
           tech: 'Python, Javascript',
           github: 'https://github.com/reno99986/capstone-ai/tree/samy',
           demo: 'null',
+          category: 'Data Analyst',
           expanded: false
         },
         {
@@ -117,6 +145,7 @@ export default {
           tech: 'Javascript, Tailwind',
           github: 'https://github.com/glenngladly26/e-commerce-ppu-kp/tree/samy',
           demo: 'null',
+          category: 'Full Stack',
           expanded: false
         },
         {
@@ -127,6 +156,7 @@ export default {
           tech: 'Laravel',
           github: 'https://github.com/Gibran699/CP-BerkahBox/tree/profil',
           demo: 'null',
+          category: 'Full Stack',
           expanded: false
         },
         {
@@ -137,6 +167,7 @@ export default {
           tech: 'Python, Vue.js, FastAPI',
           github: 'null',
           demo: 'null',
+          category: 'Data Analyst',
           expanded: false
         },
         {
@@ -147,6 +178,7 @@ export default {
           tech: 'React Js, Firebase',
           github: 'https://github.com/Project-Ippl-Asset-Market',
           demo: 'null',
+          category: 'Full Stack',
           expanded: false
         },
         {
@@ -157,6 +189,7 @@ export default {
           tech: 'Vue js, Python',
           github: 'https://github.com/SamMorales11/ag-connect',
           demo: 'https://ag-connect.vercel.app/',
+          category: 'Full Stack',
           expanded: false
         },
         {
@@ -167,10 +200,27 @@ export default {
           tech: 'TypeScript',
           github: 'https://github.com/SamMorales11/Omnihealth',
           demo: 'https://omnihealth-web.vercel.app/',
+          category: 'Full Stack',
           expanded: false
         },
       ]
     };
+  },
+  computed: {
+    categories() {
+      return [
+        { key: 'All', label: this.t().portfolio.all },
+        { key: 'Full Stack', label: this.t().portfolio.fullStack },
+        { key: 'Data Analyst', label: this.t().portfolio.dataAnalyst },
+        { key: 'Others', label: this.t().portfolio.others },
+      ];
+    },
+    filteredItems() {
+      if (this.activeCategory === 'All') {
+        return this.items;
+      }
+      return this.items.filter(item => item.category === this.activeCategory);
+    }
   }
 }
 </script>

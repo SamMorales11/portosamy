@@ -6,7 +6,7 @@
       <div class="bg-[#141414] border border-[#2a2a2a] rounded-2xl p-6 md:p-8">
         <header class="mb-6">
           <h1 class="text-2xl md:text-3xl font-bold text-white flex items-center gap-3">
-            About Me
+            {{ t().about.title }}
             <span class="h-[2px] w-16 md:w-32 bg-[#659cf0] rounded-full"></span>
           </h1>
         </header>
@@ -24,10 +24,10 @@
           <!-- Bio -->
           <div class="flex-1 text-left">
             <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4 text-justify">
-              Hi everyone! My name is <span class="text-white font-medium">Samuel Benedicto Siahaan</span>, a Balikpapan-based Software Engineer dedicated to building impactful digital solutions. I have 3 years of experience in web development and data science. I really enjoy what I do right now — in my opinion, creating programs is not just a job, but also an art that has aesthetic value.
+              Hi everyone! My name is <span class="text-white font-medium">Samuel Benedicto Siahaan</span>, a Balikpapan based Software Engineer dedicated to building impactful digital solutions. I have 3 years of experience in web development and data science. I really enjoy what I do right now in my opinion, creating programs is not just a job, but also an art that has aesthetic value.
             </p>
             <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-4 text-justify">
-              My primary focus is crafting software architecture that doesn’t just work but is well-structured, maintainable, and scalable to meet business needs. I believe that high-quality code must go hand-in-hand with system efficiency and logical clarity. I blend technical expertise with proactive communication, critical thinking, and effective time management.
+              My primary focus is crafting software architecture that doesn’t just work but is well structured, maintainable, and scalable to meet business needs. I believe that high quality code must go hand in hand with system efficiency and logical clarity. I blend technical expertise with proactive communication, critical thinking, and effective time management.
             </p>
             <p class="text-gray-400 text-sm mt-6">
               Best regards,
@@ -40,7 +40,7 @@
       <!-- ===== Technical Arsenal ===== -->
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <h2 class="text-xl md:text-2xl font-bold text-white">Technical Arsenal</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-white">{{ t().about.technical }}</h2>
           <span class="h-[2px] flex-1 bg-gradient-to-r from-[#659cf0]/50 to-transparent rounded-full"></span>
         </div>
 
@@ -51,14 +51,14 @@
             :class="activeTab === 1 ? 'bg-[#659cf0] text-white' : 'bg-[#1a1a1a] text-gray-400 hover:text-white'"
             class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
-            Tech Stack
+            {{ t().about.techStack }}
           </button>
           <button
             @click="activeTab = 2"
             :class="activeTab === 2 ? 'bg-[#659cf0] text-white' : 'bg-[#1a1a1a] text-gray-400 hover:text-white'"
             class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
-            Tools
+            {{ t().about.tools }}
           </button>
         </div>
 
@@ -110,17 +110,11 @@
       <!-- ===== GitHub Contributions ===== -->
       <div>
         <div class="flex items-center gap-3 mb-6">
-          <h2 class="text-xl md:text-2xl font-bold text-white">GitHub Contributions</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-white">{{ t().about.github }}</h2>
           <span class="h-[2px] flex-1 bg-gradient-to-r from-[#659cf0]/50 to-transparent rounded-full"></span>
         </div>
 
         <div class="bg-[#141414] border border-[#2a2a2a] rounded-2xl p-5 md:p-6 overflow-x-auto">
-          <!-- 
-            Menggunakan ghchart dengan warna biru.
-            Catatan: Service ini memakai putih untuk kotak kosong.
-            Untuk membuat kotak kosong terlihat abu-abu transparan, 
-            kita bungkus dengan filter CSS agar lebih soft di dark theme.
-          -->
           <div class="github-chart-wrapper">
             <img
               src="https://ghchart.rshah.org/659cf0/SamMorales11"
@@ -137,7 +131,7 @@
               rel="noopener noreferrer"
               class="hover:text-[#659cf0] transition-colors"
             >
-              View profile on GitHub →
+              {{ t().about.viewGithub }}
             </a>
             <span>Less → More</span>
           </div>
@@ -151,6 +145,7 @@
 <script>
 export default {
   name: 'AboutView',
+  inject: ['t'],
   data() {
     return {
       activeTab: 1,

@@ -203,6 +203,28 @@ export default {
           category: 'Full Stack',
           expanded: false
         },
+        {
+          id: 9,
+          name: 'Lionel Messi Career Analytics Dashboard',
+          imageFile: 'messi.png',
+          status: 'The Lionel Messi Career Goal Contributions Dashboard is an interactive analytics platform tracking Messi’s match level goals and assists from 2005 to 2026. It visualizes cumulative career milestones, situational splits, and comparative performance across FC Barcelona, PSG, Inter Miami, and Argentina to spotlight his sustained offensive efficiency and career trajectory.',
+          tech: 'Jupyter Notebook, Python',
+          github: 'https://github.com/SamMorales11/messi-dashboard',
+          demo: 'https://messi-dashboard-az8x6ovyb3xkog8zsjugpu.streamlit.app/',
+          category: 'Data Analyst',
+          expanded: false
+        },
+        {
+          id: 10,
+          name: 'Gen-Z Behavioral Clustering',
+          imageFile: 'genz.png',
+          status: 'The Gen-Z Social Media Behavioral Archetypes project uses unsupervised clustering (DuckDB, MiniBatchKMeans) across 1M records to identify four usage personas, proving that temporal habits like late night scrolling and fragmented checking rather than platform choice are the primary drivers of digital addiction and lower well being.',
+          tech: 'Jupyter Notebook',
+          github: 'https://github.com/SamMorales11/gen-z-behavioral-clustering',
+          demo: 'https://gen-z-behavioral-clustering-7fbcwkcuehn8qecirmyt4d.streamlit.app/',
+          category: 'Data Analyst',
+          expanded: false
+        },
       ]
     };
   },

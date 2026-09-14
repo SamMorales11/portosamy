@@ -268,8 +268,8 @@ export default {
         },
         {
           id: 4,
-          name: 'MySQL',
-          imageUrl: 'https://cdn-icons-png.flaticon.com/512/5968/5968313.png',
+          name: 'Supabse',
+          imageUrl: 'https://img.icons8.com/?size=100&id=sH0rW2TvYdr9&format=png&color=000000',
           status: 'Database'
         },
         {
@@ -325,6 +325,12 @@ export default {
           name: 'Arch Linux',
           imageUrl: 'https://img.icons8.com/?size=100&id=uIXgLv5iSlLJ&format=png&color=000000',
           status: 'Development Environment'
+        },
+        {
+          id: 14,
+          name: 'Google Colab',
+          imageUrl: 'https://img.icons8.com/?size=100&id=lOqoeP2Zy02f&format=png&color=000000',
+          status: 'Data Analysis'
         },
       ]
     };
